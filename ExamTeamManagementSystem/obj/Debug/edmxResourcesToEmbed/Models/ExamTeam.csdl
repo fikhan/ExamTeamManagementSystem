@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamTeamManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="BuildingNo" />
+    </Key>
+    <Property Name="BuildingNo" Type="Int32" Nullable="false" />
+    <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Labs" Relationship="Self.FK_Lab_Building" FromRole="Building" ToRole="Lab" />
+    <NavigationProperty Name="LogisticsIssues" Relationship="Self.FK_LogisticsIssue_Building" FromRole="Building" ToRole="LogisticsIssue" />
+    <NavigationProperty Name="TechnicalIssues" Relationship="Self.FK_TechnicalIssue_Building" FromRole="Building" ToRole="TechnicalIssue" />
+  </EntityType>
+  <EntityType Name="Computer">
+    <Key>
+      <PropertyRef Name="PCNo" />
+    </Key>
+    <Property Name="PCNo" Type="Int32" Nullable="false" />
+    <Property Name="PCDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PCNoInLab" Type="Int32" Nullable="false" />
+    <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LogisticsIssues" Relationship="Self.FK_LogisticsIssue_Computer" FromRole="Computer" ToRole="LogisticsIssue" />
+    <NavigationProperty Name="TechnicalIssues" Relationship="Self.FK_TechnicalIssue_Computer" FromRole="Computer" ToRole="TechnicalIssue" />
+  </EntityType>
+  <EntityType Name="Lab">
+    <Key>
+      <PropertyRef Name="LabNo" />
+    </Key>
+    <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LabName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NoOfPCs" Type="Int32" Nullable="false" />
+    <Property Name="BuildingNo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Building" Relationship="Self.FK_Lab_Building" FromRole="Lab" ToRole="Building" />
+    <NavigationProperty Name="LogisticsIssues" Relationship="Self.FK_LogisticsIssue_Lab" FromRole="Lab" ToRole="LogisticsIssue" />
+    <NavigationProperty Name="TechnicalIssues" Relationship="Self.FK_TechnicalIssue_Lab" FromRole="Lab" ToRole="TechnicalIssue" />
+  </EntityType>
+  <EntityType Name="LogisticsIssue">
+    <Key>
+      <PropertyRef Name="LogisticsIssueID" />
+    </Key>
+    <Property Name="LogisticsIssueID" Type="Int32" Nullable="false" />
+    <Property Name="BuildingNo" Type="Int32" Nullable="false" />
+    <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PCNo" Type="Int32" Nullable="false" />
+    <Property Name="ProblemType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date_Log" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time_Log" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Building" Relationship="Self.FK_LogisticsIssue_Building" FromRole="LogisticsIssue" ToRole="Building" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK_LogisticsIssue_Computer" FromRole="LogisticsIssue" ToRole="Computer" />
+    <NavigationProperty Name="Lab" Relationship="Self.FK_LogisticsIssue_Lab" FromRole="LogisticsIssue" ToRole="Lab" />
+  </EntityType>
+  <EntityType Name="StudentInformation">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExamTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExamLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentPicture" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ExamDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TechnicalIssue">
+    <Key>
+      <PropertyRef Name="TechnicalIssueID" />
+    </Key>
+    <Property Name="TechnicalIssueID" Type="Int32" Nullable="false" />
+    <Property Name="BuildingNo" Type="Int32" Nullable="false" />
+    <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PCNo" Type="Int32" Nullable="false" />
+    <Property Name="ProblemType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date_Tech" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time_Tech" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Building" Relationship="Self.FK_TechnicalIssue_Building" FromRole="TechnicalIssue" ToRole="Building" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK_TechnicalIssue_Computer" FromRole="TechnicalIssue" ToRole="Computer" />
+    <NavigationProperty Name="Lab" Relationship="Self.FK_TechnicalIssue_Lab" FromRole="TechnicalIssue" ToRole="Lab" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Lab_Building">
+    <End Role="Building" Type="Self.Building" Multiplicity="1" />
+    <End Role="Lab" Type="Self.Lab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingNo" />
+      </Principal>
+      <Dependent Role="Lab">
+        <PropertyRef Name="BuildingNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogisticsIssue_Building">
+    <End Role="Building" Type="Self.Building" Multiplicity="1" />
+    <End Role="LogisticsIssue" Type="Self.LogisticsIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingNo" />
+      </Principal>
+      <Dependent Role="LogisticsIssue">
+        <PropertyRef Name="BuildingNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechnicalIssue_Building">
+    <End Role="Building" Type="Self.Building" Multiplicity="1" />
+    <End Role="TechnicalIssue" Type="Self.TechnicalIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingNo" />
+      </Principal>
+      <Dependent Role="TechnicalIssue">
+        <PropertyRef Name="BuildingNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogisticsIssue_Computer">
+    <End Role="Computer" Type="Self.Computer" Multiplicity="1" />
+    <End Role="LogisticsIssue" Type="Self.LogisticsIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Computer">
+        <PropertyRef Name="PCNo" />
+      </Principal>
+      <Dependent Role="LogisticsIssue">
+        <PropertyRef Name="PCNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechnicalIssue_Computer">
+    <End Role="Computer" Type="Self.Computer" Multiplicity="1" />
+    <End Role="TechnicalIssue" Type="Self.TechnicalIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Computer">
+        <PropertyRef Name="PCNo" />
+      </Principal>
+      <Dependent Role="TechnicalIssue">
+        <PropertyRef Name="PCNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogisticsIssue_Lab">
+    <End Role="Lab" Type="Self.Lab" Multiplicity="1" />
+    <End Role="LogisticsIssue" Type="Self.LogisticsIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lab">
+        <PropertyRef Name="LabNo" />
+      </Principal>
+      <Dependent Role="LogisticsIssue">
+        <PropertyRef Name="LabNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechnicalIssue_Lab">
+    <End Role="Lab" Type="Self.Lab" Multiplicity="1" />
+    <End Role="TechnicalIssue" Type="Self.TechnicalIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lab">
+        <PropertyRef Name="LabNo" />
+      </Principal>
+      <Dependent Role="TechnicalIssue">
+        <PropertyRef Name="LabNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamTeamManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Buildings" EntityType="Self.Building" />
+    <EntitySet Name="Computers" EntityType="Self.Computer" />
+    <EntitySet Name="Labs" EntityType="Self.Lab" />
+    <EntitySet Name="LogisticsIssues" EntityType="Self.LogisticsIssue" />
+    <EntitySet Name="StudentInformations" EntityType="Self.StudentInformation" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TechnicalIssues" EntityType="Self.TechnicalIssue" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Lab_Building" Association="Self.FK_Lab_Building">
+      <End Role="Building" EntitySet="Buildings" />
+      <End Role="Lab" EntitySet="Labs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogisticsIssue_Building" Association="Self.FK_LogisticsIssue_Building">
+      <End Role="Building" EntitySet="Buildings" />
+      <End Role="LogisticsIssue" EntitySet="LogisticsIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechnicalIssue_Building" Association="Self.FK_TechnicalIssue_Building">
+      <End Role="Building" EntitySet="Buildings" />
+      <End Role="TechnicalIssue" EntitySet="TechnicalIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogisticsIssue_Computer" Association="Self.FK_LogisticsIssue_Computer">
+      <End Role="Computer" EntitySet="Computers" />
+      <End Role="LogisticsIssue" EntitySet="LogisticsIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechnicalIssue_Computer" Association="Self.FK_TechnicalIssue_Computer">
+      <End Role="Computer" EntitySet="Computers" />
+      <End Role="TechnicalIssue" EntitySet="TechnicalIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogisticsIssue_Lab" Association="Self.FK_LogisticsIssue_Lab">
+      <End Role="Lab" EntitySet="Labs" />
+      <End Role="LogisticsIssue" EntitySet="LogisticsIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechnicalIssue_Lab" Association="Self.FK_TechnicalIssue_Lab">
+      <End Role="Lab" EntitySet="Labs" />
+      <End Role="TechnicalIssue" EntitySet="TechnicalIssues" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

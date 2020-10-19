@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <title>King Saud University - جامعة الملك سعود</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="/assets/en/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/en/css/kit.min.css?v=2.1.0" rel="stylesheet" />
+    <link href="/assets/css/style.css?v=2.1.0" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/en/css/nucleo-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <!--  <title>@ViewBag.Title</title> -->
+</head>
+<body>
+    <header>
+        @Html.Partial("_Header")
+    </header>
+    <div id="main_container">
+        <!-- <div id="header">
+
+         </div> -->
+        <div class="menu">
+        </div>
+        <div class="center_content">
+            <div class="center_right">
+                @RenderSection("Pagelogincred", false)
+                @RenderSection("BuildingSelection", false)
+                @RenderSection("BuildingSelectionTech", false)
+                @RenderSection("IssueSelection", false)
+                @RenderSection("ExamTeamHomePage", false)
+                @RenderSection("TechnicalSupportIssuePageSelection", false)
+                @RenderSection("LogisticsSupportIssuePageSelection", false)
+                @RenderSection("TechnicalSupportIssuePageScienceSelection", false)
+                @RenderSection("SubmissionStatus", false)
+                @RenderSection("ErrorStatus", false)
+                @RenderSection("IThomeselection", false)
+                @RenderSection("Logisticshomeselection", false)
+                @RenderSection("TechnicalIssuesList", false)
+                @RenderSection("LogisticsIssuesList", false)
+                @RenderSection("SubmissionStatusLog", false)
+                @RenderSection("SubmissionStatusIT", false)
+                @RenderSection("ITIssueDetailSelection", false)
+                @RenderSection("LogisticsIssueDetailSelection", false)
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- end of main_container -->
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        @Html.Partial("_Footer")
+    </footer>
+</body>
+</html>

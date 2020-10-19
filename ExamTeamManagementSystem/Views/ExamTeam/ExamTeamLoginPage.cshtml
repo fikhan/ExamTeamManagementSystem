@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ExamTeamLoginPage";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@using ExamTeamManagementSystem.Models
+@model ExamTeamManagementSystem.Models.User
+
+@section Pagelogincred{
+
+    @using (Html.BeginForm("LoginValidation","ExamTeam",FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="center">
+            <div class="text_box">
+                <div class="title">User login</div>
+                <div class="login_form_row form-group">
+                    <label class="login_label">Username:</label>
+                    @Html.TextBoxFor(m => m.UserName)
+                </div>
+                <div class="login_form_row form-group">
+                    <label class="login_label">Password:</label>
+                    @Html.PasswordFor(m => m.Password)
+                </div>
+                <div class="login_form_row">
+                    @Html.ActionLink("Forgot Password ?", "ForgotPassword")
+                </div>
+                <div class="login_form_row form-group">
+                    <label class="login_label">SignIn As:</label>
+                    @Html.DropDownListFor(m => m.URoleList,
+            new SelectList(Enum.GetValues(typeof(User.UserRoleList))),
+            "Select Role")
+                    <!-- <select class="form-control" id="UserRole" name="UserRole">
+                        <option>Select Role</option>
+                        <option>ExamTeam</option>
+                        <option>ITUnitTeam</option>
+                        <option>LogisticsTeam</option>
+                    </select>  -->
+                </div>
+            </div>
+            <div class="login_form_row form-group">
+                <input type="submit" value="Sign In">
+            </div>
+        </div>
+
+    }
+}
+
+    <!-- <h2>ExamTeamLoginPage</h2>  -->
