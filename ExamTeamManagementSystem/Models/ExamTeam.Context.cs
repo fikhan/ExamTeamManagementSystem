@@ -29,6 +29,7 @@ namespace ExamTeamManagementSystem.Models
         public virtual DbSet<Computer> Computers { get; set; }
         public virtual DbSet<Lab> Labs { get; set; }
         public virtual DbSet<LogisticsIssue> LogisticsIssues { get; set; }
+        public virtual DbSet<StudentFile> StudentFiles { get; set; }
         public virtual DbSet<StudentInformation> StudentInformations { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TechnicalIssue> TechnicalIssues { get; set; }

@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="BuildingNo" />
     </Key>
-    <Property Name="BuildingNo" Type="Int32" Nullable="false" />
+    <Property Name="BuildingNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -39,7 +39,7 @@
     <Key>
       <PropertyRef Name="LogisticsIssueID" />
     </Key>
-    <Property Name="LogisticsIssueID" Type="Int32" Nullable="false" />
+    <Property Name="LogisticsIssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BuildingNo" Type="Int32" Nullable="false" />
     <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PCNo" Type="Int32" Nullable="false" />
@@ -48,9 +48,29 @@
     <Property Name="Time_Log" Type="Time" Nullable="false" Precision="7" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Building" Relationship="Self.FK_LogisticsIssue_Building" FromRole="LogisticsIssue" ToRole="Building" />
     <NavigationProperty Name="Computer" Relationship="Self.FK_LogisticsIssue_Computer" FromRole="LogisticsIssue" ToRole="Computer" />
     <NavigationProperty Name="Lab" Relationship="Self.FK_LogisticsIssue_Lab" FromRole="LogisticsIssue" ToRole="Lab" />
+  </EntityType>
+  <EntityType Name="StudentFile">
+    <Key>
+      <PropertyRef Name="Num" />
+    </Key>
+    <Property Name="SN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UniversityID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Section" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lab" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Building" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Floor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Course" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FullDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="StudentInformation">
     <Key>
@@ -62,7 +82,7 @@
     <Property Name="ExamTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ExamLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="StudentPicture" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="ExamDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExamDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -78,7 +98,7 @@
     <Key>
       <PropertyRef Name="TechnicalIssueID" />
     </Key>
-    <Property Name="TechnicalIssueID" Type="Int32" Nullable="false" />
+    <Property Name="TechnicalIssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BuildingNo" Type="Int32" Nullable="false" />
     <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PCNo" Type="Int32" Nullable="false" />
@@ -87,6 +107,7 @@
     <Property Name="Time_Tech" Type="Time" Nullable="false" Precision="7" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Building" Relationship="Self.FK_TechnicalIssue_Building" FromRole="TechnicalIssue" ToRole="Building" />
     <NavigationProperty Name="Computer" Relationship="Self.FK_TechnicalIssue_Computer" FromRole="TechnicalIssue" ToRole="Computer" />
     <NavigationProperty Name="Lab" Relationship="Self.FK_TechnicalIssue_Lab" FromRole="TechnicalIssue" ToRole="Lab" />
@@ -189,6 +210,7 @@
     <EntitySet Name="Computers" EntityType="Self.Computer" />
     <EntitySet Name="Labs" EntityType="Self.Lab" />
     <EntitySet Name="LogisticsIssues" EntityType="Self.LogisticsIssue" />
+    <EntitySet Name="StudentFiles" EntityType="Self.StudentFile" />
     <EntitySet Name="StudentInformations" EntityType="Self.StudentInformation" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TechnicalIssues" EntityType="Self.TechnicalIssue" />

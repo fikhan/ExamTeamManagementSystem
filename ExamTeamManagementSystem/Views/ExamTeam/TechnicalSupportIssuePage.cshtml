@@ -6,130 +6,144 @@
 @using ExamTeamManagementSystem.Models
 @model ExamTeamManagementSystem.Models.BLL.TechList
 
-@section TechnicalSupportIssuePageSelection{
-    <style>
-        h2.BSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
+<script language="javascript" type="text/javascript">
 
-        h2.LSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
+    window.history.forward();
+</script>
 
-        div.labSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
+@if (Session["UserName"] != null)
+{
 
-        div.BuiSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-            height: 400px;
-            width: 500px;
-        }
-    </style>
-    <h2>@ViewData["LabNo"]</h2>
+    @section TechnicalSupportIssuePageSelection{
+        <style>
+            h2.BSel {
+                border-style: solid;
+                border-color: #b3d7ff;
+            }
+
+            h2.LSel {
+                border-style: solid;
+                border-color: #b3d7ff;
+            }
+
+            div.labSel {
+                border-style: solid;
+                border-color: #b3d7ff;
+            }
+
+            div.BuiSel {
+                border-style: solid;
+                border-color: #b3d7ff;
+                height: 400px;
+                width: 500px;
+            }
+        </style>
+        <h2>@ViewData["LabNo"]</h2>
 
 
 
 
-    @using (Html.BeginForm("FormProcTechSupport","ExamTeam", FormMethod.Post))
-    {
+        @using (Html.BeginForm("FormProcTechSupport", "ExamTeam", FormMethod.Post))
+        {
 
-        @Html.AntiForgeryToken()
-        <table style="width:100%;">
-            <tr>
-                <td>
-                    <table style="width:100%;">
-                        <tr>
-                            <td>
-                                <div class="BuiSel">
-                                    <h2>Technical Issue Type</h2>
-                                    <table style="width:100%;">
-                                        @for (int i = 0; i < Model.techIs.Count; i++)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.CheckBoxFor(m => Model.techIs[i].IsChecked)
-                                                    @Model.techIs[i].Text
-                                                    @Html.HiddenFor(m => Model.techIs[i].Value)
-                                                    @Html.HiddenFor(m => Model.techIs[i].Text)
-                                                 </td>
-                                            </tr>
+            @Html.AntiForgeryToken()
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <div class="BuiSel">
+                                        <h2>Technical Issue Type</h2>
+                                        <table style="width:100%;">
+                                            @for (int i = 0; i < Model.techIs.Count; i++)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => Model.techIs[i].IsChecked)
+                                                        @Model.techIs[i].Text
+                                                        @Html.HiddenFor(m => Model.techIs[i].Value)
+                                                        @Html.HiddenFor(m => Model.techIs[i].Text)
+                                                    </td>
+                                                </tr>
 
-                                        }
-                                                    <!-- <tr><td style="width:100%">Html.CheckBox("Softwarefilemissingissue", false)<label for="Checkbox1">Exam Software Update File Missing </label>Model.ProblemType.techIs<br></td></tr>
-                <tr><td>Html.CheckBox("Monitorcompatibilityissue", false)<label for="Checkbox2">Monitor Compatibility Issue </label><br></td></tr>
-                <tr><td>Html.CheckBox("Keyboardissue", false)<label for="Checkbox3">Keyboard Issue </label><br></td></tr>
-                <tr><td>Html.CheckBox("Mouseissue", false)<label for="Checkbox4">Mouse Issue </label><br></td></tr>
-                <tr><td>Html.CheckBox("Internetissue", false)<label for="Checkbox5">Internet Issue </label><br></td></tr>
-                <tr><td>Html.CheckBox("AntiVirusissue", false)<label for="Checkbox6">AntiVirus Issue </label><br></td></tr>
-                <tr><td>Html.CheckBox("Hangingissue", false)<label for="Checkbox7">Hanging Issue </label><br></td></tr>
-                <tr><td>Html.CheckBox("Pcbooterror", false)<label for="Checkbox8">PC Boot Error </label><br></td></tr>
-                <tr><td>Html.CheckBox("Headphonedrivers", false)<label for="Checkbox9">Headphone Drivers</label><br></td></tr>
-                <tr><td>Html.CheckBox("Pcslow", false)<label for="Checkbox10">PC Slow </label><br></td></tr>
-                <tr><td>Html.CheckBox("Epodium", false)<label for="Checkbox11">E - Podium </label><br></td></tr>
-                <tr><td>Html.CheckBox("Audioissues", false)<label for="Checkbox12">Audio Issues </label><br></td></tr>
-                <tr><td>Html.CheckBox("Others", false)<label for="Checkbox13">Others </label><br></td></tr>-->
+                                            }
+                                            <!-- <tr><td style="width:100%">Html.CheckBox("Softwarefilemissingissue", false)<label for="Checkbox1">Exam Software Update File Missing </label>Model.ProblemType.techIs<br></td></tr>
+                                            <tr><td>Html.CheckBox("Monitorcompatibilityissue", false)<label for="Checkbox2">Monitor Compatibility Issue </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Keyboardissue", false)<label for="Checkbox3">Keyboard Issue </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Mouseissue", false)<label for="Checkbox4">Mouse Issue </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Internetissue", false)<label for="Checkbox5">Internet Issue </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("AntiVirusissue", false)<label for="Checkbox6">AntiVirus Issue </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Hangingissue", false)<label for="Checkbox7">Hanging Issue </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Pcbooterror", false)<label for="Checkbox8">PC Boot Error </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Headphonedrivers", false)<label for="Checkbox9">Headphone Drivers</label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Pcslow", false)<label for="Checkbox10">PC Slow </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Epodium", false)<label for="Checkbox11">E - Podium </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Audioissues", false)<label for="Checkbox12">Audio Issues </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Others", false)<label for="Checkbox13">Others </label><br></td></tr>-->
 
                                         </table>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table style="width:100%;margin-left:300;margin-right:300;">
-                        <tr>
-                            <td>
-                                <div class="labSel form-check">
-                                    <h2>Priority Selection</h2>
-                                    <table style="width:100%;">
-                                        @for (int i = 0; i < Model.pIs.Count; i++)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.CheckBoxFor(m => Model.pIs[i].IsChecked)
-                                                    @Model.pIs[i].Text
-                                                    @Html.HiddenFor(m => Model.pIs[i].Value)
-                                                    @Html.HiddenFor(m => Model.pIs[i].Text)
-                                                </td>
-                                            </tr>
-
-                                        }
-                                        <!--<tr><td>Html.CheckBox("High", false)<label for="Checkbox14"> High </label><br></td></tr>
-                                        <tr><td>Html.CheckBox("Medium", false)<label for="Checkbox15"> Medium </label><br></td></tr>
-                                        <tr><td>Html.CheckBox("Low", false)<label for="Checkbox16"> Low </label><br></td></tr> -->
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="labSel form-group">
-                                    <h2>Description of the Issue</h2>
-                                    @Html.TextAreaFor(m => Model.techdescription)
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <table style="width:100%;">
-            <tr>
-                <td>
-                    &nbsp;
-                    <div class="IssueSel form-group">
-
-                        <table style="width:20%;">
-                            <tr><td><input id="Button1" type="button" onclick="location.href='/ExamTeam/IssuePage'" value="Back" /></td><td><input id="Button2" type="button" onclick="location.href='/ExamTeam/ExamTeamHomePage'" value="Home" /></td><td><input id="Button2" type="submit" value="Submit" /></td></tr>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
+                    </td>
+                    <td>
+                        <table style="width:100%;margin-left:300;margin-right:300;">
+                            <tr>
+                                <td>
+                                    <div class="labSel form-check">
+                                        <h2>Priority Selection</h2>
+                                        <table style="width:100%;">
+                                            @for (int i = 0; i < Model.pIs.Count; i++)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => Model.pIs[i].IsChecked)
+                                                        @Model.pIs[i].Text
+                                                        @Html.HiddenFor(m => Model.pIs[i].Value)
+                                                        @Html.HiddenFor(m => Model.pIs[i].Text)
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                            <!--<tr><td>Html.CheckBox("High", false)<label for="Checkbox14"> High </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Medium", false)<label for="Checkbox15"> Medium </label><br></td></tr>
+                                            <tr><td>Html.CheckBox("Low", false)<label for="Checkbox16"> Low </label><br></td></tr> -->
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="labSel form-group">
+                                        <h2>Description of the Issue</h2>
+                                        @Html.TextAreaFor(m => Model.techdescription)
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        &nbsp;
+                        <div class="IssueSel form-group">
+
+                            <table style="width:20%;">
+                                <tr><td><input id="Button1" type="button" onclick="location.href='/ExamTeam/IssuePage'" value="Back" /></td><td><input id="Button2" type="button" onclick="location.href='/ExamTeam/ExamTeamHomePage'" value="Home" /></td><td><input id="Button2" type="submit" value="Submit" /></td></tr>
+                                <tr><td><input id="Button3" type="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        }
     }
+}
+else
+{
+    < h2 > User Logged Out</ h2 >
 }

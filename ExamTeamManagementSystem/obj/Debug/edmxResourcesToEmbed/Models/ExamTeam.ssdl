@@ -40,6 +40,26 @@
     <Property Name="Time_Log" Type="time" Precision="7" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Priority" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StudentFile">
+    <Key>
+      <PropertyRef Name="Num" />
+    </Key>
+    <Property Name="SN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UniversityID" Type="varchar(max)" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Section" Type="varchar(max)" Nullable="false" />
+    <Property Name="Day" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="varchar(max)" Nullable="false" />
+    <Property Name="Time" Type="varchar(max)" Nullable="false" />
+    <Property Name="Lab" Type="varchar(max)" Nullable="false" />
+    <Property Name="Building" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Floor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Course" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FullDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="Num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="StudentInformation">
     <Key>
@@ -76,6 +96,7 @@
     <Property Name="Time_Tech" Type="time" Precision="7" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Priority" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comments" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -175,6 +196,7 @@
     <EntitySet Name="Computer" EntityType="Self.Computer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lab" EntityType="Self.Lab" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LogisticsIssue" EntityType="Self.LogisticsIssue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentFile" EntityType="Self.StudentFile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentInformation" EntityType="Self.StudentInformation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TechnicalIssue" EntityType="Self.TechnicalIssue" Schema="dbo" store:Type="Tables" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ExamTeamManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ExamTeamManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Building">
           <Key>
             <PropertyRef Name="BuildingNo" />
@@ -45,6 +45,26 @@
           <Property Name="Time_Log" Type="time" Precision="7" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Priority" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="StudentFile">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="SN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UniversityID" Type="varchar(max)" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Section" Type="varchar(max)" Nullable="false" />
+          <Property Name="Day" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="varchar(max)" Nullable="false" />
+          <Property Name="Time" Type="varchar(max)" Nullable="false" />
+          <Property Name="Lab" Type="varchar(max)" Nullable="false" />
+          <Property Name="Building" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Floor" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Course" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="Num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentInformation">
           <Key>
@@ -81,6 +101,7 @@
           <Property Name="Time_Tech" Type="time" Precision="7" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Priority" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -180,6 +201,7 @@
           <EntitySet Name="Computer" EntityType="Self.Computer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lab" EntityType="Self.Lab" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogisticsIssue" EntityType="Self.LogisticsIssue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentFile" EntityType="Self.StudentFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInformation" EntityType="Self.StudentInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TechnicalIssue" EntityType="Self.TechnicalIssue" Schema="dbo" store:Type="Tables" />
@@ -213,7 +235,8 @@
             <End Role="TechnicalIssue" EntitySet="TechnicalIssue" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ExamTeamManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -221,7 +244,7 @@
           <Key>
             <PropertyRef Name="BuildingNo" />
           </Key>
-          <Property Name="BuildingNo" Type="Int32" Nullable="false" />
+          <Property Name="BuildingNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -256,7 +279,7 @@
           <Key>
             <PropertyRef Name="LogisticsIssueID" />
           </Key>
-          <Property Name="LogisticsIssueID" Type="Int32" Nullable="false" />
+          <Property Name="LogisticsIssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BuildingNo" Type="Int32" Nullable="false" />
           <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PCNo" Type="Int32" Nullable="false" />
@@ -265,9 +288,29 @@
           <Property Name="Time_Log" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Building" Relationship="Self.FK_LogisticsIssue_Building" FromRole="LogisticsIssue" ToRole="Building" />
           <NavigationProperty Name="Computer" Relationship="Self.FK_LogisticsIssue_Computer" FromRole="LogisticsIssue" ToRole="Computer" />
           <NavigationProperty Name="Lab" Relationship="Self.FK_LogisticsIssue_Lab" FromRole="LogisticsIssue" ToRole="Lab" />
+        </EntityType>
+        <EntityType Name="StudentFile">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="SN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UniversityID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Section" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lab" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Building" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Floor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Course" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="StudentInformation">
           <Key>
@@ -279,7 +322,7 @@
           <Property Name="ExamTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ExamLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StudentPicture" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ExamDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExamDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -295,7 +338,7 @@
           <Key>
             <PropertyRef Name="TechnicalIssueID" />
           </Key>
-          <Property Name="TechnicalIssueID" Type="Int32" Nullable="false" />
+          <Property Name="TechnicalIssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BuildingNo" Type="Int32" Nullable="false" />
           <Property Name="LabNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PCNo" Type="Int32" Nullable="false" />
@@ -304,6 +347,7 @@
           <Property Name="Time_Tech" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Building" Relationship="Self.FK_TechnicalIssue_Building" FromRole="TechnicalIssue" ToRole="Building" />
           <NavigationProperty Name="Computer" Relationship="Self.FK_TechnicalIssue_Computer" FromRole="TechnicalIssue" ToRole="Computer" />
           <NavigationProperty Name="Lab" Relationship="Self.FK_TechnicalIssue_Lab" FromRole="TechnicalIssue" ToRole="Lab" />
@@ -406,6 +450,7 @@
           <EntitySet Name="Computers" EntityType="Self.Computer" />
           <EntitySet Name="Labs" EntityType="Self.Lab" />
           <EntitySet Name="LogisticsIssues" EntityType="Self.LogisticsIssue" />
+          <EntitySet Name="StudentFiles" EntityType="Self.StudentFile" />
           <EntitySet Name="StudentInformations" EntityType="Self.StudentInformation" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TechnicalIssues" EntityType="Self.TechnicalIssue" />
@@ -487,19 +532,40 @@
                 <ScalarProperty Name="Time_Log" ColumnName="Time_Log" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentFiles">
+            <EntityTypeMapping TypeName="ExamTeamManagementSystemModel.StudentFile">
+              <MappingFragment StoreEntitySet="StudentFile">
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Lab" ColumnName="Lab" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="FullDate" ColumnName="FullDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentInformations">
             <EntityTypeMapping TypeName="ExamTeamManagementSystemModel.StudentInformation">
               <MappingFragment StoreEntitySet="StudentInformation">
-                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
                 <ScalarProperty Name="StudentFullName" ColumnName="StudentFullName" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="Course" ColumnName="Course" />
                 <ScalarProperty Name="ExamTime" ColumnName="ExamTime" />
                 <ScalarProperty Name="ExamLocation" ColumnName="ExamLocation" />
                 <ScalarProperty Name="StudentPicture" ColumnName="StudentPicture" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -526,6 +592,7 @@
                 <ScalarProperty Name="Time_Tech" ColumnName="Time_Tech" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

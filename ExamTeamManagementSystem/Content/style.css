@@ -6,7 +6,11 @@ body {
     font-size: 12px;
     margin: 0px auto auto auto;
     color: #36322b;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 p{
 padding:0px;
 text-align:justify;
@@ -252,6 +256,7 @@ width:821px;
 height:50px;
 clear:both;
 color:#837d7b;
+margin-top : auto;
 }
 .left_footer{
 float:left;

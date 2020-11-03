@@ -23,6 +23,7 @@ namespace ExamTeamManagementSystem.Models
         public System.TimeSpan Time_Tech { get; set; }
         public string Status { get; set; }
         public string Priority { get; set; }
+        public string Comments { get; set; }
     
         public virtual Building Building { get; set; }
         public virtual Computer Computer { get; set; }

@@ -18,15 +18,13 @@ namespace ExamTeamManagementSystem.Models
         public string UserName { get; set; }
         public string UserRole { get; set; }
         public string Password { get; set; }
-
         public UserRoleList URoleList { get; set; }
 
         public enum UserRoleList
         {
-            ExamTeam, 
-            ITUnitTeam, 
-            LogisticsTeam
+            ExamTeam,
+            ITUnitTeam,
+            LogisticsSupportTeam
         }
-
     }
 }

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="ExamTeam" />
+  <setParameter name="ExamTeamManagementSystemConnectionString-Web.config Connection String" value="Data Source=FY-45-O-1620-05;Initial Catalog=ExamTeamManagementSystem;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" />
+  <setParameter name="ExamTeamManagementSystemEntities-Web.config Connection String" value="metadata=res://*/Models.ExamTeam.csdl|res://*/Models.ExamTeam.ssdl|res://*/Models.ExamTeam.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=FY-45-O-1620-05;initial catalog=ExamTeamManagementSystem;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework&quot;" />
+</parameters>

@@ -59,6 +59,7 @@ namespace ExamTeamManagementSystem.Controllers
                     foreach (TechnicalIssue ti in query)
                     {
                         ti.Status = item.Text;
+                        ti.Comments = tl.techdescription;
                     }
                     try
                     {
