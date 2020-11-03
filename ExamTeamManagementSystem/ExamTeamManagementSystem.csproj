@@ -240,6 +240,9 @@
     <Content Include="Views\ExamTeam\LogOutAction.cshtml" />
     <Content Include="Views\ExamTeam\FileUpload.cshtml" />
     <Content Include="Views\ExamTeam\StudentSearch.cshtml" />
+    <Content Include="Views\ExamTeam\SuccessfulUpload.cshtml" />
+    <Content Include="Views\ExamTeam\InvalidFileFormat.cshtml" />
+    <Content Include="Views\ExamTeam\ChooseExcelFilePageStatus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
