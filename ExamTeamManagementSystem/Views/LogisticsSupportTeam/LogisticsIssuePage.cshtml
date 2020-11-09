@@ -33,16 +33,32 @@
                 border-style: solid;
                 border-color: dodgerblue;
             }
+
+            table {
+                table-layout: fixed;
+            }
+
+            td {
+                word-wrap: break-word; 
+            }
+
+            th {
+                word-wrap: break-word;
+                font-size: 10px;
+            }
         </style>
 
         <h2>Logistics Issue Status</h2>
-        <table id="myTable" class="table table-bordered table-striped" style="width: 100%" border="1">
-            <tr><th>Issue ID</th><th>Building</th><th>Lab No</th><th>PC No</th><th>Problem Type</th><th>Date</th><th>Recieved Time</th><th>Priority</th><th>Status</th><th>Comments</th><th>Action</th></tr>
-            @foreach (var std in ViewData["LogIssues"] as IList<ExamTeamManagementSystem.Models.LogisticsIssue>)
-            {
-                <tr><td>@std.LogisticsIssueID</td><td>@std.BuildingNo</td><td>@std.LabNo</td><td>@std.PCNo</td><td>@std.ProblemType</td><td>@std.Date_Log</td><td>@std.Time_Log</td><td>@std.Priority</td><td>@std.Status</td><td>@std.Comments</td><td><input id="Button1" type="button" onclick="location.href='@Url.Action("LogisticsissueUpdate", "LogisticsSupportTeam", new { id = std.LogisticsIssueID })'" value="Action" /></td></tr>
-            }
+        
+            <table id="myTable" class="table table-bordered table-striped" style="width: 270%;" border="1">
+        
+        <thead><tr><th>Issue ID</th><th>Building</th><th>Lab No</th><th>PC No</th><th>Problem Type</th><th>Date</th><th>Recieved Time</th><th>Priority</th><th>Status</th><th>Comments</th><th>Action</th></tr></thead>
+        @foreach (var std in ViewData["LogIssues"] as IList<ExamTeamManagementSystem.Models.LogisticsIssue>)
+        {
+            <tr><td>@std.LogisticsIssueID</td><td>@std.BuildingNo</td><td>@std.LabNo</td><td>@std.PCNo</td><td>@std.ProblemType</td><td>@std.Date_Log</td><td>@std.Time_Log</td><td>@std.Priority</td><td>@std.Status</td><td>@std.Comments</td><td><input id="Button1" type="button" onclick="location.href='@Url.Action("LogisticsissueUpdate", "LogisticsSupportTeam", new { id = std.LogisticsIssueID })'" value="Action" /></td></tr>
+        }
         </table>
+
         <table style="width:100%;">
             <tr>
                 <td>

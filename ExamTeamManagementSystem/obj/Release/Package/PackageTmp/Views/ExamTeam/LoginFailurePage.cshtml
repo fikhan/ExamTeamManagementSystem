@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "LoginFailurePage";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+<style>
+    .centered {
+        position: fixed;
+        top: 33%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+    }
+    .centered1 {
+        position: fixed;
+        top: 33%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, 0%);
+    }
+
+    div.IssueSel {
+        border-style: solid;
+        border-color: dodgerblue;
+    }
+</style>
+
+ 
+<table style="width:100%;">
+ 
+    <tr><td><input class="centered" id="Button1" type="button" onclick="location.href='/ExamTeam/ExamTeamLoginPage'" value="Go To Login Page" /></td></tr>
+</table>
+        <table class="centered1" style="width:100%;">
+          
+            <tr><td><h2 class="centered1">Login Failed!</h2></td></tr>
+        </table>
+
+
+

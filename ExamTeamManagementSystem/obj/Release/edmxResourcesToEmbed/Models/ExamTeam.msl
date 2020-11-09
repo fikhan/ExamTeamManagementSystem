@@ -43,19 +43,40 @@
           <ScalarProperty Name="Time_Log" ColumnName="Time_Log" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentFiles">
+      <EntityTypeMapping TypeName="ExamTeamManagementSystemModel.StudentFile">
+        <MappingFragment StoreEntitySet="StudentFile">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Lab" ColumnName="Lab" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="FullDate" ColumnName="FullDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StudentInformations">
       <EntityTypeMapping TypeName="ExamTeamManagementSystemModel.StudentInformation">
         <MappingFragment StoreEntitySet="StudentInformation">
-          <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
           <ScalarProperty Name="StudentFullName" ColumnName="StudentFullName" />
           <ScalarProperty Name="StudentID" ColumnName="StudentID" />
           <ScalarProperty Name="Course" ColumnName="Course" />
           <ScalarProperty Name="ExamTime" ColumnName="ExamTime" />
           <ScalarProperty Name="ExamLocation" ColumnName="ExamLocation" />
           <ScalarProperty Name="StudentPicture" ColumnName="StudentPicture" />
+          <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,6 +103,7 @@
           <ScalarProperty Name="Time_Tech" ColumnName="Time_Tech" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

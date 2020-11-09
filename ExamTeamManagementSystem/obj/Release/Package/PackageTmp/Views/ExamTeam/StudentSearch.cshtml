@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "StudentSearch";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@using ExamTeamManagementSystem.Models
+@model ExamTeamManagementSystem.Models.StudentFile
+
+@if (Session["UserName"] != null)
+{
+    @section StudentSearch{
+        <style>
+            #mydiv {
+                border: solid;
+                border-color: dodgerblue;
+
+            }
+
+            div.IssueSel {
+                border-style: solid;
+                border-color: dodgerblue;
+            }
+        </style>
+        <div id="mydiv">
+            @using (Html.BeginForm("StudentSearchResult", "ExamTeam", FormMethod.Post))
+            {
+                <h2>Search Student</h2>@Html.TextBoxFor(m => Model.UniversityID)<input id="Button2" type="submit" value="Submit" />
+                @Html.Hidden("returnUrl", this.Request.RawUrl)
+            }
+        </div>
+        <div id="mydiv">
+            <h2>Student ID : </h2><div class="well">@ViewBag.StudentID</div>
+            <h2>Student Name : </h2><div class="well"> @ViewBag.StudentName</div>
+            <h2>Section </h2><div class="well">@ViewBag.Section</div>
+            <h2>Day : </h2><div class="well">@ViewBag.Day</div>
+            <h2>Date : </h2><div class="well">@ViewBag.Date</div>
+            <h2>Time : </h2><div class="well">@ViewBag.Time</div>
+            <h2>Lab : </h2><div class="well">@ViewBag.Lab</div>
+            <h2>Building : </h2><div class="well">@ViewBag.Building</div>
+            <h2>Floor : </h2><div class="well">@ViewBag.Floor</div>
+            <h2>Course : </h2><div class="well">@ViewBag.Course</div>
+            <h2>Full Date : </h2><div class="well">@ViewBag.FullDate</div>
+            <h2>Password : </h2><div class="well">@ViewBag.Password</div>
+        </div>
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    &nbsp;
+                    <div class="IssueSel form-group">
+
+                        <table style="width:20%;">
+                            <tr><td><input id="Button3" type="button" onclick="location.href='/ExamTeam/ExamTeamHomePage'" value="Go Back To Home Page" /></td></tr>
+                            <tr><td><input id="Button3" type="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+}
+else
+{
+    <h2>User Logged Out</h2>
+}
+

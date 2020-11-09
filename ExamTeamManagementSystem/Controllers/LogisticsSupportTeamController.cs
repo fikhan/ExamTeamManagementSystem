@@ -64,6 +64,7 @@ namespace ExamTeamManagementSystem.Controllers
                     foreach (LogisticsIssue ti in query)
                     {
                         ti.Status = item.Text;
+                        ti.Comments = lo.logdescription;
                     }
                     try
                     {

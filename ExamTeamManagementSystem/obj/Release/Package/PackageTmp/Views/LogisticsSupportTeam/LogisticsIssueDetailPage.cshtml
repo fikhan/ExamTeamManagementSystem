@@ -6,109 +6,125 @@
 
 @model ExamTeamManagementSystem.Models.BLL.LogList
 
-@section LogisticsIssueDetailSelection{
-    <style>
-        h2.BSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
+<script language="javascript" type="text/javascript">
 
-        h2.LSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
+    window.history.forward();
+</script>
+@if (Session["UserName"] != null)
+{
 
-        div.labSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
 
-        div.IssueSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-        }
+    @section LogisticsIssueDetailSelection{
+        <style>
+            h2.BSel {
+                border-style: solid;
+                border-color: dodgerblue;
+            }
 
-        div.BuiSel {
-            border-style: solid;
-            border-color: #b3d7ff;
-            height: 400px;
-            width: 500px;
-        }
-    </style>
-    @using (Html.BeginForm("FormUpdateLog","LogisticsSupportTeam",FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <table style="width:100%;">
-            <tr>
-                <td>
-                    <table style="width:100%;">
-                        <tr>
-                            <td>
-                                <div class="BuiSel">
-                                    <h2>Technical Issue Type</h2>
-                                    <table style="width:100%;">
-                                        <tr><td><label> Issue ID: @ViewData["LogisticsIssueID"]</label></td></tr>
-                                        <tr><td><label> Building: </label></td></tr>
-                                        <tr><td><label> Lab Number: @ViewData["LabNo"]  </label></td></tr>
-                                        <tr><td><label> PC Number: @ViewData["PCNo"]</label></td></tr>
-                                        <tr><td><label> Problem Type: @ViewData["ProblemType"]</label></td></tr>
-                                        <tr><td><label> Recieved Time: @ViewData["RecievedTime"]</label></td></tr>
-                                        <tr><td><label> Priority:  @ViewData["Priority"]</label></td></tr>
-                                        <tr><td><label> Status:  @ViewData["Status"]</label></td></tr>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table style="width:100%;margin-left:300;margin-right:300;">
-                        <tr>
-                            <td>
-                                <div class="labSel form-check">
-                                    <h2>Action</h2>
-                                    <table style="width:100%;">
-                                        @for (int i = 0; i < Model.ls.Count; i++)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.CheckBoxFor(m => Model.ls[i].IsChecked)
-                                                    @Model.ls[i].Text
-                                                    @Html.HiddenFor(m => Model.ls[i].Value)
-                                                    @Html.HiddenFor(m => Model.ls[i].Text)
-                                                </td>
-                                            </tr>
-                                        }
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="labSel form-group">
-                                    <h2>Comments</h2>
-                                    @Html.TextAreaFor(m => Model.logdescription)
-                                    @Html.Hidden("LogID", ViewData["LogisticsIssueID"])
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <table style="width:100%;">
-            <tr>
-                <td>
-                    &nbsp;
-                    <div class="IssueSel form-group">
+            h2.LSel {
+                border-style: solid;
+                border-color: dodgerblue;
+            }
 
-                        <table style="width:20%;">
-                            <tr><td><input id="Button1" type="button" onclick="location.href='/LogisticsSupportTeam/LogisticsHomePage'" value="Back" /></td><td><input id="Button2" type="submit" value="Submit" /></td></tr>
+            div.labSel {
+                border-style: solid;
+                border-color: dodgerblue;
+            }
+
+            div.IssueSel {
+                border-style: solid;
+                border-color: dodgerblue;
+            }
+
+            div.BuiSel {
+                border-style: solid;
+                border-color: dodgerblue;
+                height: 400px;
+                width: 500px;
+            }
+        </style>
+        @using (Html.BeginForm("FormUpdateLog", "LogisticsSupportTeam", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <div class="BuiSel">
+                                        <h2>Technical Issue Type</h2>
+                                        <table style="width:100%;">
+                                            <tr><td><label> Issue ID: @ViewData["LogisticsIssueID"]</label></td></tr>
+                                            <tr><td><label> Building: </label></td></tr>
+                                            <tr><td><label> Lab Number: @ViewData["LabNo"]  </label></td></tr>
+                                            <tr><td><label> PC Number: @ViewData["PCNo"]</label></td></tr>
+                                            <tr><td><label> Problem Type: @ViewData["ProblemType"]</label></td></tr>
+                                            <tr><td><label> Recieved Time: @ViewData["RecievedTime"]</label></td></tr>
+                                            <tr><td><label> Priority:  @ViewData["Priority"]</label></td></tr>
+                                            <tr><td><label> Status:  @ViewData["Status"]</label></td></tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
+                    </td>
+                    <td>
+                        <table style="width:100%;margin-left:300;margin-right:300;">
+                            <tr>
+                                <td>
+                                    <div class="labSel form-check">
+                                        <h2>Action</h2>
+                                        <table style="width:100%;">
+                                            @for (int i = 0; i < Model.ls.Count; i++)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => Model.ls[i].IsChecked)
+                                                        @Model.ls[i].Text
+                                                        @Html.HiddenFor(m => Model.ls[i].Value)
+                                                        @Html.HiddenFor(m => Model.ls[i].Text)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="labSel form-group">
+                                        <h2>Comments</h2>
+                                        @Html.TextAreaFor(m => Model.logdescription)
+                                        @Html.Hidden("LogID", ViewData["LogisticsIssueID"])
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        &nbsp;
+                        <div class="IssueSel form-group">
+
+                            <table style="width:20%;">
+                                <tr><td><input id="Button1" type="button" onclick="location.href='/LogisticsSupportTeam/LogisticsHomePage'" value="Back" /></td><td><input id="Button2" type="submit" value="Submit" /></td></tr>
+                                <tr>
+                                    <td><input id="Button3" type="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        }
     }
+}
+else
+{
+    < h2 > User Logged Out</ h2 >
 }
 

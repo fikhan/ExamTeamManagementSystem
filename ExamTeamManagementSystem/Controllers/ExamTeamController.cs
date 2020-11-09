@@ -16,7 +16,9 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using LinqToExcel;
+using QRCoder;
 using System.Data.SqlClient;
+using System.Drawing;
 //using ImportExceData.Models;
 
 namespace ExamTeamManagementSystem.Controllers
@@ -478,6 +480,69 @@ namespace ExamTeamManagementSystem.Controllers
             ViewBag.FullDate = result.FullDate.ToString();
             ViewBag.Password = result.Password.ToString();
             return View("StudentSearch");
+        }
+
+        public ActionResult GenerateQRCode()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GenerateQRCode1(string txtQRCode)
+        {
+            ViewBag.txtQRCode = txtQRCode;
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(txtQRCode, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            //System.Web.UI.WebControls.Image imgBarCode = new System.Web.UI.WebControls.Image();
+            //imgBarCode.Height = 150;
+            //imgBarCode.Width = 150;
+            using (Bitmap bitMap = qrCode.GetGraphic(20))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    ViewBag.imageBytes = ms.ToArray();
+                    //imgBarCode.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(byteImage);
+                }
+            }
+            return View("GenerateQRCode");
+        }
+
+        public ActionResult StudentSearch1()
+        {
+            ViewBag.StudentID = null;
+            ViewBag.StudentName = null;
+            ViewBag.Section = null;
+            ViewBag.Day = null;
+            ViewBag.Date = null;
+            ViewBag.Time = null;
+            ViewBag.Lab = null;
+            ViewBag.Building = null;
+            ViewBag.Floor = null;
+            ViewBag.Course = null;
+            ViewBag.FullDate = null;
+            ViewBag.Password = null;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult StudentSearchResult1(StudentFile fl, string returnUrl)
+        {
+            var result = _db.StudentFiles.SingleOrDefault(u => u.UniversityID == fl.UniversityID);
+            Debug.WriteLine("The result" + result.StudentName);
+            ViewBag.StudentID = result.UniversityID.ToString();
+            ViewBag.StudentName = result.StudentName.ToString();
+            ViewBag.Section = result.Section.ToString();
+            ViewBag.Day = result.Day.ToString();
+            ViewBag.Date = result.Date.ToString();
+            ViewBag.Time = result.Time.ToString();
+            ViewBag.Lab = result.Lab.ToString();
+            ViewBag.Building = result.Building.ToString();
+            ViewBag.Floor = result.Floor.ToString();
+            ViewBag.Course = result.Course.ToString();
+            ViewBag.FullDate = result.FullDate.ToString();
+            ViewBag.Password = result.Password.ToString();
+            return View("StudentSearch1");
         }
     }
 }

@@ -55,6 +55,24 @@
                 border: solid;
                 border-color: dodgerblue;
             }
+
+            table {
+                table-layout: fixed;
+            }
+
+            td {
+                word-wrap: break-word;
+            }
+
+            th {
+                word-wrap: break-word;
+                font-size: 10px;
+            }
+
+            .button {
+                height: 50px;
+                width: 150px;
+            }
             /* table {
                   table-layout: fixed;
               } */
@@ -71,12 +89,17 @@
         <div id="mydiv">
             <button class="button" onclick="location.href='/ExamTeam/StudentSearch'">Search Student</button>
         </div>
+        <h2>Upload File</h2>
         <div id="mydiv">
-        <button class="button" onclick="location.href='/ExamTeam/FileUpload'">Upload File</button>
+            <button class="button" onclick="location.href='/ExamTeam/FileUpload'">Upload File</button>
+        </div>
+        <h2>Generate QR Code</h2>
+        <div id="mydiv">
+            <button class="button" onclick="location.href='/ExamTeam/GenerateQRCode'">Generate QR Code</button>
         </div>
         <h2>Technical Issue Status</h2>
 
-        <table id="myTable" class="table table-bordered table-striped" style="width: 100%" border="1">
+        <table id="myTable" class="table table-bordered table-striped" style="width: 270%" border="1">
             <thead style="width:100%"><tr><th>Issue ID</th><th>Building</th><th>Lab No</th><th>PC No</th><th>Problem Type</th><th>Date</th><th>Recieved Time</th><th>Priority</th><th>Status</th><th>Comments</th></tr></thead>
             <tbody>
                 @foreach (var std in ViewData["TechIssues"] as IList<ExamTeamManagementSystem.Models.TechnicalIssue>)
@@ -88,7 +111,7 @@
 
 
         <h2>Logistics Issue Status</h2>
-        <table id="myTable1" class="table table-striped" style="width:100%" border="1">
+        <table id="myTable1" class="table table-striped" style="width:270%" border="1">
             <thead><tr><th>Issue ID</th><th>Building</th><th>Lab No</th><th>PC No</th><th>Problem Type</th><th>Date</th><th>Recieved Time</th><th>Priority</th><th>Status</th><th>Comments</th></tr></thead>
             <tbody>
                 @foreach (var std in ViewData["LogIssues"] as IList<ExamTeamManagementSystem.Models.LogisticsIssue>)
