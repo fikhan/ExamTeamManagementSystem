@@ -10,6 +10,21 @@
 
     @using (Html.BeginForm("LoginValidation","ExamTeam",FormMethod.Post))
     {
+        <style>
+            .button {
+                background-color: #008CBA; /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+        </style>
+
         @Html.AntiForgeryToken()
         <div class="center">
             <div class="text_box">
@@ -39,7 +54,7 @@
                 </div>
             </div>
             <div class="login_form_row form-group">
-                <input type="submit" value="Sign In">
+                <input type="submit" class="button" value="Sign In">
             </div>
         </div>
 

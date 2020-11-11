@@ -24,6 +24,23 @@
             border: solid;
             border-color: dodgerblue;
         }
+        .button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        /*.button {
+            height: 50px;
+            width: 150px;
+        }*/
     </style>
     @using (Html.BeginForm("UploadExcel", "ExamTeam", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
     {
@@ -48,7 +65,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+                    <input type="submit" class="button" value="Upload" id="btnSubmit" class="btn btn-primary" />
 
                 </div>
             </div>
@@ -63,8 +80,8 @@
                 <div class="IssueSel form-group">
 
                     <table style="width:20%;">
-                        <tr><td><input id="Button3" type="button" onclick="location.href='/ExamTeam/IssuePage'" value="Go To Issue Page" /></td></tr>
-                        <tr><td><input id="Button3" type="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
+                        <tr><td><input id="Button3" type="button" class="button" onclick="location.href='/ExamTeam/IssuePage'" value="Go To Issue Page" /></td></tr>
+                        <tr><td><input id="Button3" type="button" class="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
                     </table>
                 </div>
             </td>

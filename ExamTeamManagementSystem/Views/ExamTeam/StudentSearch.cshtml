@@ -9,52 +9,143 @@
 @if (Session["UserName"] != null)
 {
     @section StudentSearch{
+        <script>
+            $(document).ready(function () {
+                $("#Button2").click(function () {
+                    //alert("Background color = " + $('#sr1').css('color', 'lightblue').fadeOut(1000));
+                    //$('.transform').toggleClass('transform-active');
+                    //$('#sr1').css('color', 'green');
+                });
+
+                /* $("form").submit(function (event) {
+                     $("span").text("Not valid!").show().fadeOut(2000);
+                     event.preventDefault();
+                 })*/
+            });
+        </script>
         <style>
             #mydiv {
-                border: solid;
-                border-color: dodgerblue;
-
+                border-style: solid;
+                border: 2px solid dodgerblue;
+                border-radius: 5px;
             }
 
             div.IssueSel {
                 border-style: solid;
-                border-color: dodgerblue;
+                border: 2px solid dodgerblue;
+                border-radius: 5px;
             }
+
+            .well {
+                width: 280px;
+                height: 30px;
+                background-color: lightblue;
+                animation-name: example;
+                animation-duration: 4s;
+                border: 2px solid dodgerblue;
+                border-radius: 5px;
+            }
+
+            .transform {
+                -webkit-transition: all 2s ease;
+                -moz-transition: all 2s ease;
+                -o-transition: all 2s ease;
+                // -ms-transition: all 2s ease;
+                transition: all 2s ease;
+            }
+
+            .transform-active {
+                background-color: lightblue;
+            }
+
+            .changecolor {
+                animation-name: example;
+                animation-duration: 4s;
+            }
+
+            .htransform {
+                text-align: center;
+            }
+
+            @@keyframes example {
+                from {
+                    background-color: dodgerblue;
+                }
+
+                to {
+                    background-color: lightblue;
+                }
+            }
+            .button {
+                background-color: #008CBA; /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            /*.button {
+                height: 50px;
+                width: 150px;
+            }*/
         </style>
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    &nbsp;
+                    <div id="mydiv">
+                        @using (Html.BeginForm("StudentSearchResult", "ExamTeam", FormMethod.Post))
+                        {
+                            <h2>Search Student</h2>@Html.TextBoxFor(m => Model.UniversityID)<input id="Button2" class="button" type="submit" value="Submit" />
+                            @Html.Hidden("returnUrl", this.Request.RawUrl)
+                        }
+                    </div>
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+         <!--   <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr> -->
+        </table>
         <div id="mydiv">
-            @using (Html.BeginForm("StudentSearchResult", "ExamTeam", FormMethod.Post))
-            {
-                <h2>Search Student</h2>@Html.TextBoxFor(m => Model.UniversityID)<input id="Button2" type="submit" value="Submit" />
-                @Html.Hidden("returnUrl", this.Request.RawUrl)
-            }
-        </div>
-        <div id="mydiv">
-            <h2>Student ID : </h2><div class="well">@ViewBag.StudentID</div>
-            <h2>Student Name : </h2><div class="well"> @ViewBag.StudentName</div>
-            <h2>Section </h2><div class="well">@ViewBag.Section</div>
-            <h2>Day : </h2><div class="well">@ViewBag.Day</div>
-            <h2>Date : </h2><div class="well">@ViewBag.Date</div>
-            <h2>Time : </h2><div class="well">@ViewBag.Time</div>
-            <h2>Lab : </h2><div class="well">@ViewBag.Lab</div>
-            <h2>Building : </h2><div class="well">@ViewBag.Building</div>
-            <h2>Floor : </h2><div class="well">@ViewBag.Floor</div>
-            <h2>Course : </h2><div class="well">@ViewBag.Course</div>
-            <h2>Full Date : </h2><div class="well">@ViewBag.FullDate</div>
-            <h2>Password : </h2><div class="well">@ViewBag.Password</div>
+            <h2>Student ID : </h2><div id="sr1" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentID</h2></div>
+            <h2>Student Name : </h2><div id="sr2" class="well"> <h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentName</h2></div>
+            <h2>Section </h2><div id="sr3" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Section</h2></div>
+            <h2>Day : </h2><div id="sr4" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Day</h2></div>
+            <h2>Date : </h2><div id="sr5" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Date</h2></div>
+            <h2>Time : </h2><div id="sr6" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Time</h2></div>
+            <h2>Lab : </h2><div id="sr7" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Lab</h2></div>
+            <h2>Building : </h2><div id="sr8" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Building</h2></div>
+            <h2>Floor : </h2><div id="sr9" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Floor</h2></div>
+            <h2>Course : </h2><div id="sr10" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Course</h2></div>
+            <h2>Full Date : </h2><div id="sr11" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.FullDate</h2></div>
+            <h2>Password : </h2><div id="sr12" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Password</h2></div>
+            <h2>Password : </h2><div id="sr12" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Password</h2></div>
         </div>
         <table style="width:100%;">
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
             <tr>
                 <td>
                     &nbsp;
                     <div class="IssueSel form-group">
 
                         <table style="width:20%;">
-                            <tr><td><input id="Button3" type="button" onclick="location.href='/ExamTeam/ExamTeamHomePage'" value="Go Back To Home Page" /></td></tr>
-                            <tr><td><input id="Button3" type="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
+                            <tr><td><input id="Button3" type="button" class="button" onclick="location.href='/ExamTeam/ExamTeamHomePage'" value="Go Back To Home Page" /></td></tr>
+                            <tr><td><input id="Button3" type="button" class="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
                         </table>
                     </div>
                 </td>
             </tr>
+
         </table>
     }
 }
