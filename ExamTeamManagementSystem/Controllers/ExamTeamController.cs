@@ -214,9 +214,26 @@ namespace ExamTeamManagementSystem.Controllers
             var l = (from tch in _db.TechnicalIssues
                                 orderby tch.TechnicalIssueID descending
                                 select tch.TechnicalIssueID).First();
-          
+            Debug.WriteLine("hidden field value from tech" + Request.Form["SubmissionFrom"]);
             string s1 = l.ToString();
-            return RedirectToAction("ExamTeamFinalPage",new { s = s1 });
+            
+           
+            /*if (Request.Form["SubmissionFrom"].ToString() == "ITUnitTeam")
+            {
+                Debug.WriteLine("hidden field value from ITUnitTeam" + Request.Form["SubmissionFrom"]);
+                return RedirectToAction("ITFinalSubmissionPage", "ITUnitTeam", new { s = s1 });
+            }
+            else if (Request.Form["SubmissionFrom"].ToString() == "LogSupportTeam")
+            {
+                Debug.WriteLine("hidden field value from LogSupportTeam" + Request.Form["SubmissionFrom"]);
+                return RedirectToAction("CreateNewLogIssue", "LogisticsSupportTeam", new { s = s1 });
+            }
+            else 
+            {*/
+                Debug.WriteLine("hidden field value from ExamTeamFinalPage" + Request.Form["SubmissionFrom"]);
+                string s2 = Request.Form["SubmissionFrom"].ToString();
+            return RedirectToAction("ExamTeamFinalPage", new { s = s1, s4 = s2 });
+            //  }
         }
 
         [HttpPost]
@@ -271,7 +288,20 @@ namespace ExamTeamManagementSystem.Controllers
                      orderby tch.LogisticsIssueID descending
                      select tch.LogisticsIssueID).First();
             string s1 = li.ToString();
-            return RedirectToAction("ExamTeamFinalPage", new { s = s1 });
+            Debug.WriteLine("hidden field value from Log" + Request.Form["SubmissionFrom"]);
+            /*  if (Request.Form["SubmissionFrom"].ToString() == "ITUnitTeam")
+              {
+                  return RedirectToAction("ITFinalSubmissionPage", "ITUnitTeam", new { s = s1 });
+              }
+              else if (Request.Form["SubmissionFrom"].ToString() == "LogSupportTeam")
+              {
+                  return RedirectToAction("CreateNewLogIssue", "LogisticsSupportTeam", new { s = s1 });
+              }
+              else
+              {*/
+            string s2 = Request.Form["SubmissionFrom"].ToString();
+            return RedirectToAction("ExamTeamFinalPage", new { s = s1 , s4 = s2 });
+            //}
         }
         public ActionResult TechnicalSupportIssuePageLog(string labno)
         {
@@ -308,9 +338,21 @@ namespace ExamTeamManagementSystem.Controllers
             return View(tb);
         }
 
-        public ActionResult ExamTeamFinalPage(string s)
+        public ActionResult ExamTeamFinalPage(string s, string s4)
         {
             ViewBag.TechIssue = "Your technical issues is recorded your Issue ID is" + s;
+            if (s4 == "ITUnitTeam")
+            {
+                ViewBag.Link = "/ITUnitTeam/ITHomePage";
+            }
+            else if ( s4 == "LogSupportTeam")
+            {
+                ViewBag.Link = "/LogisticsSupportTeam/LogisticsHomePage";
+            }
+            else
+            {
+                ViewBag.Link = "/ExamTeam/ExamTeamHomePage";
+            }
             return View();
         }
 

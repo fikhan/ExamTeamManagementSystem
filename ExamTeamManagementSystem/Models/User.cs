@@ -22,6 +22,7 @@ namespace ExamTeamManagementSystem.Models
 
         public enum UserRoleList
         {
+            SelectRole,
             ExamTeam,
             ITUnitTeam,
             LogisticsSupportTeam

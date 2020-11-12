@@ -116,5 +116,59 @@ namespace ExamTeamManagementSystem.Controllers
         {
             return View();
         }
+
+        public ActionResult BuildingSelectionPageLog()
+        {
+            return View();
+        }
+        public ActionResult CreateNewLogIssue(string labno)
+        {
+            List<LogIssues> l = new List<LogIssues>()
+            {
+               new LogIssues { Text = "Cleaning Issue", Value = 1, IsChecked = false },
+               new LogIssues { Text = "Lighting Issue ", Value = 2, IsChecked = false },
+               new LogIssues { Text = "Air Conditioning Issue", Value = 2, IsChecked = false },
+               new LogIssues { Text = "Carpet Issue", Value = 2, IsChecked = false },
+               new LogIssues { Text = "Chair Issue", Value = 1, IsChecked = false },
+               new LogIssues { Text = "Table Issue", Value = 2, IsChecked = false },
+               new LogIssues { Text = "Others", Value = 2, IsChecked = false },
+
+            };
+
+            List<PrioritySelectionLog> pl = new List<PrioritySelectionLog>()
+            {
+                new PrioritySelectionLog { Text = "High", Value = 1, IsChecked = false },
+                new PrioritySelectionLog { Text = "Medium", Value = 1, IsChecked = false },
+                new PrioritySelectionLog { Text = "Low", Value = 1, IsChecked = false },
+            };
+
+            LogList tb = new LogList();
+            tb.logIs = l;
+            tb.plIs = pl;
+            ViewData["LabNo"] = labno;
+            return View(tb);
+        }
+
+        public ActionResult LogOutAction()
+        {
+            if (Session["Username"] != null)
+            {
+                Session.Abandon();
+                Debug.WriteLine("Session Username" + Session["Username"]);
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
+        public ActionResult LogFinalSubmissionPage(string s)
+        {
+            ViewBag.TechIssue = "Your technical issues is recorded your Issue ID is" + s;
+            
+            return View();
+        }
     }
 }

@@ -115,5 +115,65 @@ namespace ExamTeamManagementSystem.Controllers
         {
             return View();
         }
+
+        public ActionResult ITFinalSubmissionPage(string s)
+        {
+            ViewBag.TechIssue = "Your technical issues is recorded your Issue ID is" + s;
+            return View();
+        }
+
+        public ActionResult BuildingSelectionPageTechITUnit()
+        {
+            return View();
+        }
+        
+        public ActionResult CreateNewIssue(string labno)
+        {
+            List<TechIssues> l = new List<TechIssues>()
+            {
+               new TechIssues { Text = "Exam Software Update File Missing", Value = 1, IsChecked = false },
+               new TechIssues { Text = "Monitor Compatibility Issue", Value = 2, IsChecked = false },
+               new TechIssues { Text = "Keyboard Issue", Value = 2, IsChecked = false },
+               new TechIssues { Text = "Mouse Issue", Value = 2, IsChecked = true },
+               new TechIssues { Text = "Internet Issue", Value = 1, IsChecked = false },
+               new TechIssues { Text = "AntiVirus Issue", Value = 2, IsChecked = false },
+               new TechIssues { Text = "Hanging Issue", Value = 2, IsChecked = false },
+               new TechIssues { Text = "PC Boot Error", Value = 2, IsChecked = false },
+               new TechIssues { Text = "Headphone Drivers", Value = 2, IsChecked = false },
+               new TechIssues { Text = "PC Slow", Value = 2, IsChecked = false },
+               new TechIssues { Text = "E - Podium", Value = 2, IsChecked = false },
+               new TechIssues { Text = "Audio Issues", Value = 2, IsChecked = false },
+               new TechIssues { Text = "Others", Value = 2, IsChecked = false },
+            };
+
+            List<PrioritySelection> p = new List<PrioritySelection>()
+            {
+                new PrioritySelection { Text = "High", Value = 1, IsChecked = false },
+                new PrioritySelection { Text = "Medium", Value = 1, IsChecked = false },
+                new PrioritySelection { Text = "Low", Value = 1, IsChecked = false },
+            };
+
+            TechList tb = new TechList();
+            tb.techIs = l;
+            tb.pIs = p;
+            ViewData["LabNo"] = labno;
+            return View(tb);
+        }
+
+        public ActionResult LogOutActionTech()
+        {
+            if (Session["Username"] != null)
+            {
+                Session.Abandon();
+                Debug.WriteLine("Session Username" + Session["Username"]);
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
     }
 }

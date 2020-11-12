@@ -255,6 +255,14 @@
     <Content Include="Views\ExamTeam\GenerateQRCode1.cshtml" />
     <Content Include="Views\ExamTeam\StudentSearch1.cshtml" />
     <None Include="Properties\PublishProfiles\ExamTeamManagementSystem20201109134114 - Web Deploy.pubxml" />
+    <Content Include="Views\ITUnitTeam\CreateNewIssue.cshtml" />
+    <Content Include="Views\LogisticsSupportTeam\CreateNewLogIssue.cshtml" />
+    <Content Include="Views\ITUnitTeam\BuildingSelectionPageTechITUnit.cshtml" />
+    <Content Include="Views\LogisticsSupportTeam\BuildingSelectionPageLog.cshtml" />
+    <Content Include="Views\LogisticsSupportTeam\LogOutActionLog.cshtml" />
+    <Content Include="Views\ITUnitTeam\LogOutActionTech.cshtml" />
+    <Content Include="Views\ITUnitTeam\ITFinalSubmissionPage.cshtml" />
+    <Content Include="Views\LogisticsSupportTeam\LogFinalSubmissionPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

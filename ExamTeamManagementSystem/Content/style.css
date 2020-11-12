@@ -17,19 +17,24 @@ text-align:justify;
 margin:0px;
 line-height:20px;
 }
+
 p.welcome{
 padding:30px 35px 0 35px;
 }
+
 p.testimonial{
 font-style:italic;
 padding:5px 15px 0 5px;
 }
+
 .clear{
 clear:both;
 }
+
 a{
 text-decoration:underline;
 }
+
 a.read_more{
 display:block;
 width:66px;
@@ -44,9 +49,11 @@ text-decoration:none;
 font-size:12px;
 background:url(images/read_more_bg.gif) no-repeat center;
 }
+
 a:hover.read_more{
 text-decoration:underline;
 }
+
 img.left_img{
 float:left;
 padding:3px 25px 3px 3px;
@@ -159,6 +166,7 @@ padding:0px;
     clear: both;
     padding: 25px 0 30px 0;
     background-color: #e6f2ff;
+    border: 5px solid #0080ff;
 }
 .center_left{
 width:500px;

@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "TechnicalSupportIssuePage";
+    ViewBag.Title = "CreateNewIssue";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
+
 @using ExamTeamManagementSystem.Models
 @model ExamTeamManagementSystem.Models.BLL.TechList
 
@@ -14,7 +15,7 @@
 @if (Session["UserName"] != null)
 {
 
-    @section TechnicalSupportIssuePageSelection{
+    @section TechnicalSupportIssuePageSelectionITUnitTeam{
         <style>
             div.IssueSel {
                 border: 2px solid dodgerblue;
@@ -154,9 +155,9 @@
                     <td>
                         &nbsp;
                         <div class="IssueSel form-group">
-                            @Html.Hidden("SubmissionFrom", "ExamTeamTech")
+                            @Html.Hidden("SubmissionFrom", "ITUnitTeam")
                             <table style="width:20%;">
-                                <tr><td><input id="Button1" type="button" class="button" onclick="location.href='/ExamTeam/IssuePage'" value="Back" /></td><td><input id="Button2" type="button" class="button" onclick="location.href='/ExamTeam/ExamTeamHomePage'" value="Home" /></td><td><input id="Button2" class="button" type="submit" value="Submit" /></td></tr>
+                                <tr><td><input id="Button1" type="button" class="button" onclick="location.href='/ITUnitTeam/ITHomePage'" value="Back" /></td><td><input id="Button2" type="button" class="button" onclick="location.href='/ITUnitTeam/ITHomePage'" value="Home" /></td><td><input id="Button2" class="button" type="submit" value="Submit" /></td></tr>
                                 <tr><td><input id="Button3" type="button" class="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>
                             </table>
                         </div>
@@ -170,3 +171,4 @@ else
 {
     < h2 > User Logged Out</ h2 >
 }
+

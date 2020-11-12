@@ -48,6 +48,11 @@
             margin: 4px 2px;
             cursor: pointer;
         }
+
+        .but1 {
+            height: 50px;
+            width: 200px;
+        } 
     
     </style>
     <script type="text/javascript">
@@ -116,8 +121,8 @@
                 <div class="BuiSel">
                     <h2>Select Building</h2>
                     <table style="width:20%;">
-                        <tr><td><input style="height:50px;width:200px" id="Button1" class="button" onClick="javascript:ClickedMe1()" type="button" value="Humanity Building" /></td></tr>
-                        <tr><td><input style="height:50px;width:200px" id="Button2" class="button" onClick=" javascript:ClickedMe()" type="button" value="Science Building" /></td></tr>
+                        <tr><td><input style="height:50px;width:200px" id="Button1" class="button but1" onClick="javascript:ClickedMe1()" type="button" value="Humanity Building" /></td></tr>
+                        <tr><td><input style="height:50px;width:200px" id="Button2" class="button but1" onClick=" javascript:ClickedMe()" type="button" value="Science Building" /></td></tr>
                     </table>
                 </div>
             </td>
@@ -131,7 +136,7 @@
                         <tr><td><input id="Button6" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1619"})'" value="1619" /></td><td><input id="Button11" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1622"})'" value="1622" /></td><td><input id="Button16" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1623"})'" value="1623" /></td><td><input id="Button21" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1624"})'" value="1624" /></td><td><input id="Button26" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1625"})'" value="1625" /></td></tr>
                         <tr><td><input id="Button7" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1722"})'" value="1722" /></td><td><input id="Button12" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1724"})'" value="1724" /></td><td><input id="Button17" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1726"})'" value="1726" /></td><td><input id="Button22" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="1728"})'" value="1728" /></td><td>&nbsp;</td></tr>
                     </table>
-                </div><input id="Button1" class="button" onClick="javascript:ClickedMeEnable()" type="button" value="Enable" />
+                </div><input id="Button1" class="button but1" onClick="javascript:ClickedMeEnable()" type="button" value="Enable" />
             </td>
         <tr>
             <td>&nbsp;</td>
@@ -150,7 +155,7 @@
                         <tr><td><input id="Button35" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G481"})'" value="G481" /></td><td><input id="Button45" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G232"})'" value="G232" /></td><td><input id="Button55" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G251"})'" value="G251" /></td><td><input id="Button65" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G463"})'" value="G463" /></td><td><input id="Button75" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePageLog","ExamTeam",new { labno ="G201"})'" value="G201" /></td></tr>
                         <tr><td><input id="Button36" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G205"})'" value="G205" /></td><td><input id="Button46" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G473"})'" value="G473" /></td><td><input id="Button56" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G474"})'" value="G474" /></td><td><input id="Button66" type="button" onclick="location.href='@Url.Action("TechnicalSupportIssuePage","ExamTeam",new { labno ="G475"})'" value="G475" /></td><td>&nbsp;</td></tr>
                     </table>
-                </div><input id="Button1" class="button" onClick=" javascript:ClickedMe1Enable()" type="button" value="Enable" />
+                </div><input id="Button1" class="button but1" onClick=" javascript:ClickedMe1Enable()" type="button" value="Enable" />
             </td>
         </tr>
     </table>
@@ -161,8 +166,8 @@
                 <div class="IssueSel form-group">
 
                     <table style="width:20%;">
-                        <tr><td><input id="Button1" type="button" class="button" onclick="location.href='/ExamTeam/IssuePage'" value="Back" /></td></tr>
-                        <tr><td><input id="Button3" type="button" class="button" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>                    
+                        <tr><td><input id="Button1" type="button" class="button but1" onclick="location.href='/ExamTeam/IssuePage'" value="Back" /></td></tr>
+                        <tr><td><input id="Button3" type="button" class="button but1" onclick="location.href='@Url.Action("LogOutAction", "ExamTeam")'" value="LogOut" /></td></tr>                    
                     </table>
                 </div>
             </td>

@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "LogOutActionLog";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+<SCRIPT LANGUAGE="javascript">
+    //clears browser history and redirects url
+    function ClearHistory() {
+        var backlen = history.length;
+        history.go(-backlen);
+        window.location.href = loggedOutPageUrl
+    }
+</SCRIPT>
+
+@section LogOutMessageLog
+{
+    <style>
+        .centered {
+            position: fixed;
+            top: 33%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+
+        .centered1 {
+            position: fixed;
+            top: 33%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, 0%);
+        }
+
+        div.IssueSel {
+            border-style: solid;
+            border-color: dodgerblue;
+        }
+
+        .button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        /* .button {
+            height: 50px;
+            width: 150px;
+        }*/
+    </style>
+    <div>
+
+
+
+        <table class="centered1" style="width:100%;">
+            <tr><td><h2 class="centered1">Logged Out Successfully!</h2></td></tr>
+        </table>
+
+
+
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    &nbsp;
+                    <div class="IssueSel form-group">
+
+                        <table style="width:20%;">
+                            <tr><td><input id="Button3" class="button" type="button" onclick="location.href='/ExamTeam/ExamTeamLoginPage'" value="Go To Login Page" /></td></tr>
+
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+}
+
