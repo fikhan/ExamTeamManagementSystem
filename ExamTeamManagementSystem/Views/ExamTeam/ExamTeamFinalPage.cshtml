@@ -8,15 +8,39 @@
 {
     <style>
         .centered {
-            position: fixed;
+            position: relative;
             top: 37%;
-            left: 50%;
+            left: 100%;
             /* bring your own prefixes */
-            transform: translate(-50%, -50%);
+            // transform: translate(-50%, -50%);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .centered1 {
+            position: relative;
+            top: 37%;
+            left: 140%;
+            /* bring your own prefixes */
+            // transform: translate(-50%, -50%);
+            overflow: hidden;
+            white-space: nowrap;
         }
         div.IssueSel {
             border: 2px solid dodgerblue;
             border-radius: 5px;
+            margin: auto;
+        }
+        .button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
         }
     </style>
    
@@ -24,10 +48,10 @@
         <tr>
             <td>
                 &nbsp;
-                <div class="IssueSel">
+                <div>
                     <table style="width:20%;">
                         <tr><td><div><!-- <h2 class=centered>Your Issue is Successfully Recorded</h2>  --><h2 class=centered>@ViewBag.TechIssue</h2></div></td></tr>
-                        <tr><td><input id="Button2" type="button" onclick="location.href='@ViewBag.Link'" value="Home" /></td></tr>
+                        <tr><td><input id="Button2" type="button" class="button centered1" onclick="location.href='@ViewBag.Link'" value="Home" /></td></tr>
                     </table>
                 </div>
             </td>

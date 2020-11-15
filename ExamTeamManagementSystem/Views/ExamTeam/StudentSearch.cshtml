@@ -86,9 +86,29 @@
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
+               
                 margin: 4px 2px;
                 cursor: pointer;
             }
+            h2 {
+                position: relative;
+                top: -7px;
+                //right: 20px;
+            }
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                width: 100%;
+                background-color: #008CBA;
+            }
+
+                .card:hover {
+                    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                }
+
+          /*  .container {
+                padding: 2px 16px;
+            } */
 
             /*.button {
                 height: 50px;
@@ -119,7 +139,12 @@
             <tr>
                 <td>
                     <div id="mydiv">
-                        <h2>Student ID : </h2><div id="sr1" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentID</h2></div>
+                        <table style="width:100%;">
+                        <tr><td><h2>Student ID : </h2><div id="sr1" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentID</h2></div></td><td><h2>Student Name : </h2><div id="sr2" class="well"> <h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentName</h2></div></td><td><h2>Section </h2><div id="sr3" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Section</h2></div></td></tr>
+                        <tr><td><h2>Day : </h2><div id="sr4" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Day</h2></div></td><td><h2>Date : </h2><div id="sr5" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Date</h2></div></td><td><h2>Time : </h2><div id="sr6" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Time</h2></div></td></tr>
+                        <tr><td><h2>Lab : </h2><div id="sr7" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Lab</h2></div></td><td><h2>Building : </h2><div id="sr8" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Building</h2></div></td><td><h2>Floor : </h2><div id="sr9" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Floor</h2></div></td></tr>
+                        </table>
+                        <!--<h2>Student ID : </h2><div id="sr1" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentID</h2></div>
                         <h2>Student Name : </h2><div id="sr2" class="well"> <h2 class="htransform" style="color:dodgerblue">@ViewBag.StudentName</h2></div>
                         <h2>Section </h2><div id="sr3" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Section</h2></div>
                         <h2>Day : </h2><div id="sr4" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Day</h2></div>
@@ -131,12 +156,20 @@
                         <h2>Course : </h2><div id="sr10" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Course</h2></div>
                         <h2>Full Date : </h2><div id="sr11" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.FullDate</h2></div>
                         <h2>Password : </h2><div id="sr12" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Password</h2></div>
-                        <h2>Password : </h2><div id="sr12" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Password</h2></div>
+                        <h2>Password : </h2><div id="sr12" class="well"><h2 class="htransform" style="color:dodgerblue">@ViewBag.Password</h2></div> -->
                     </div>
                 </td>
                 <td>
-                    <div>
-                        <img src="~/images/STARS.png" alt="" />
+                    <div class="card">
+                            <img src="~/images/STARS.png" alt="" />
+                            <div class="container">
+                                <table style="width:100%;">
+                                    <tr><td><h2>Student Name : </h2></td><td>&nbsp;</td><td><h2 style="color:dodgerblue">@ViewBag.StudentName</h2></td></tr>
+                                    <tr><td>Section:</td><td><p>@ViewBag.Section</p></td></tr>
+                                    <tr><td>Lab:</td></td><td><p>@ViewBag.Lab</p></td></tr>
+                                    <tr><td>Building:</td><td><p>@ViewBag.Building</p></td></tr>
+                                </table>
+                             </div>
                     </div>
                 </td>
             </tr>
