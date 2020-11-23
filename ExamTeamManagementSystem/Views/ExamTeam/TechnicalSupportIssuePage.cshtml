@@ -39,8 +39,8 @@
             div.BuiSel {
                 border: 2px solid dodgerblue;
                 border-radius: 5px;
-                height: 400px;
-                width: 500px;
+                height: 350px;
+                width: 488px;
             }
 
             .button {
@@ -111,41 +111,40 @@
                             </tr>
                         </table>
                     </td>
-                    <td>
-                        <table style="width:100%;margin-left:300;margin-right:300;">
-                            <tr>
-                                <td>
-                                    <div class="labSel form-check">
-                                        <h2>Priority Selection</h2>
-                                        <table style="width:100%;">
-                                            @for (int i = 0; i < Model.pIs.Count; i++)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @Html.CheckBoxFor(m => Model.pIs[i].IsChecked)
-                                                        @Model.pIs[i].Text
-                                                        @Html.HiddenFor(m => Model.pIs[i].Value)
-                                                        @Html.HiddenFor(m => Model.pIs[i].Text)
-                                                    </td>
-                                                </tr>
 
-                                            }
-                                            <!--<tr><td>Html.CheckBox("High", false)<label for="Checkbox14"> High </label><br></td></tr>
-                                            <tr><td>Html.CheckBox("Medium", false)<label for="Checkbox15"> Medium </label><br></td></tr>
-                                            <tr><td>Html.CheckBox("Low", false)<label for="Checkbox16"> Low </label><br></td></tr> -->
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="labSel form-group">
-                                        <h2>Description of the Issue</h2>
-                                        @Html.TextAreaFor(m => Model.techdescription)
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                </tr>
+            </table>
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <div class="labSel form-check">
+                            <h2>Priority Selection</h2>
+                            <table style="width:100%;">
+                                @for (int i = 0; i < Model.pIs.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.CheckBoxFor(m => Model.pIs[i].IsChecked)
+                                            @Model.pIs[i].Text
+                                            @Html.HiddenFor(m => Model.pIs[i].Value)
+                                            @Html.HiddenFor(m => Model.pIs[i].Text)
+                                        </td>
+                                    </tr>
+
+                                }
+                                <!--<tr><td>Html.CheckBox("High", false)<label for="Checkbox14"> High </label><br></td></tr>
+                                <tr><td>Html.CheckBox("Medium", false)<label for="Checkbox15"> Medium </label><br></td></tr>
+                                <tr><td>Html.CheckBox("Low", false)<label for="Checkbox16"> Low </label><br></td></tr> -->
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="labSel form-group">
+                            <h2>Description of the Issue</h2>
+                            @Html.TextAreaFor(m => Model.techdescription)
+                        </div>
                     </td>
                 </tr>
             </table>

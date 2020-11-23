@@ -40,8 +40,9 @@
                 border: 2px solid dodgerblue;
                 border-radius: 5px;
                 height: 350px;
-                width: 500px;
+                width: 488px;
             }
+
             .button {
                 background-color: #008CBA; /* Green */
                 border: none;
@@ -60,7 +61,7 @@
                 width: 150px;
             }
         </style>
-       <!-- <h2>ViewData["LabNo"]</h2> -->
+        <!-- <h2>ViewData["LabNo"]</h2> -->
         @using (Html.BeginForm("FormProcLogSupport", "ExamTeam", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
@@ -98,41 +99,39 @@
                             </tr>
                         </table>
                     </td>
+                </tr>
+            </table>
+            <table style="width:100%;">
+                <tr>
                     <td>
-                        <table style="width:100%;margin-left:300;margin-right:300;">
-                            <tr>
-                                <td>
-                                    <div class="labSel form-check">
-                                        <h2>Priority Selection</h2>
-                                        <table style="width:100%;">
-                                            @for (int i = 0; i < Model.plIs.Count; i++)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @Html.CheckBoxFor(m => Model.plIs[i].IsChecked)
-                                                        @Model.plIs[i].Text
-                                                        @Html.HiddenFor(m => Model.plIs[i].Value)
-                                                        @Html.HiddenFor(m => Model.plIs[i].Text)
-                                                    </td>
-                                                </tr>
+                        <div class="labSel form-check">
+                            <h2>Priority Selection</h2>
+                            <table style="width:100%;">
+                                @for (int i = 0; i < Model.plIs.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.CheckBoxFor(m => Model.plIs[i].IsChecked)
+                                            @Model.plIs[i].Text
+                                            @Html.HiddenFor(m => Model.plIs[i].Value)
+                                            @Html.HiddenFor(m => Model.plIs[i].Text)
+                                        </td>
+                                    </tr>
 
-                                            }
-                                            <!--<tr><td><input id="Checkbox8" type="checkbox" value="High" /><label for="Checkbox8"> High </label><br></td></tr>
-                                            <tr><td><input id="Checkbox9" type="checkbox" value="Medium" /><label for="Checkbox9"> Medium </label><br></td></tr>
-                                            <tr><td><input id="Checkbox10" type="checkbox" value="Low" /><label for="Checkbox10"> Low </label><br></td></tr> -->
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="labSel form-group">
-                                        <h2>Description of the Issue</h2>
-                                        @Html.TextAreaFor(m => Model.logdescription)
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                }
+                                <!--<tr><td><input id="Checkbox8" type="checkbox" value="High" /><label for="Checkbox8"> High </label><br></td></tr>
+                                <tr><td><input id="Checkbox9" type="checkbox" value="Medium" /><label for="Checkbox9"> Medium </label><br></td></tr>
+                                <tr><td><input id="Checkbox10" type="checkbox" value="Low" /><label for="Checkbox10"> Low </label><br></td></tr> -->
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="labSel form-group">
+                            <h2>Description of the Issue</h2>
+                            @Html.TextAreaFor(m => Model.logdescription)
+                        </div>
                     </td>
                 </tr>
             </table>
